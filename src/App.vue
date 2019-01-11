@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <li v-for="i in total" :key="i">
+      <HelloWorld msg="Welcome to Your Vue.js App"/>
+    </li>
   </div>
 </template>
 
@@ -9,6 +11,11 @@
 import HelloWorld from './components/HelloWorld.vue';
 
 export default {
+  data() {
+    return {
+      total: 1000,
+    };
+  },
   name: 'app',
   components: {
     HelloWorld,
