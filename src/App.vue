@@ -1,12 +1,3 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <li v-for="i in total" :key="i">
-      <HelloWorld msg="Welcome to Your Vue.js App"/>
-    </li>
-  </div>
-</template>
-
 <script>
 import HelloWorld from './components/HelloWorld.vue';
 
@@ -20,12 +11,21 @@ export default {
   components: {
     HelloWorld,
   },
+  render() {
+    const elements = [...Array(this.total)];
+    return (
+        <div id="app">
+          <img alt="Vue logo" src="./assets/logo.png" />
+          {elements.map(() => <HelloWorld msg={'Welcome to Your Vue.js App'} />)}
+        </div>
+    );
+  },
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
