@@ -11,13 +11,30 @@ export default {
   components: {
     HelloWorld,
   },
-  render() {
+  render(createElement) {
     const elements = [...Array(this.total)];
-    return (
-        <div id="app">
-          <img alt="Vue logo" src="./assets/logo.png" />
-          {elements.map(() => <HelloWorld msg={'Welcome to Your Vue.js App'} />)}
-        </div>
+    const children = elements.map(() => [
+      createElement('img', {
+        attrs: {
+          alt: 'Vue logo',
+          src: './assets/logo.png',
+        },
+      }),
+      createElement('HelloWorld', {
+        attrs: {
+          msg: 'Welcome to Your Vue.js App',
+        },
+      }),
+    ]);
+
+    return createElement(
+      'div',
+      {
+        attrs: {
+          id: 'app',
+        },
+      },
+      children,
     );
   },
 };
